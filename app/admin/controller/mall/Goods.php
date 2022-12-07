@@ -27,6 +27,8 @@ class Goods extends AdminController
     {
         parent::__construct($app);
         $this->model = new MallGoods();
+        // $this->assign('checkList', ["","良","恶"]);
+        $this->assign('checkList', [1 =>"良", 2 => "恶"]);
     }
 
     /**
@@ -57,6 +59,37 @@ class Goods extends AdminController
             ];
             return json($data);
         }
+        return $this->fetch();
+    }
+    
+    /**
+     * @NodeAnotation(title="编辑")
+     */
+    public function edit($id)
+    {
+        $row = $this->model->find($id);
+        empty($row) && $this->error('数据不存在');
+        if ($this->request->isPost()) {
+            $post = $this->request->post();
+           
+             $rule = [
+                'logo'  => 'require|between:1,2',
+                'sales'   => 'require|between:1,2'
+            ];
+
+    $message = [
+      'logo.between' => '第一次分类必填',
+      'sales.between' => '第二次分类必填',
+    ];
+            $this->validate($post, $rule,$message);
+            try {
+                $save = $row->save($post);
+            } catch (\Exception $e) {
+                $this->error('保存失败');
+            }
+            $save ? $this->success('保存成功') : $this->error('保存失败');
+        }
+        $this->assign('row', $row);
         return $this->fetch();
     }
 

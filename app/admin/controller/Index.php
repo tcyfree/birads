@@ -8,6 +8,7 @@ use app\admin\model\SystemQuick;
 use app\common\controller\AdminController;
 use think\App;
 use think\facade\Env;
+use app\admin\model\MallGoods;
 
 class Index extends AdminController
 {
@@ -37,6 +38,10 @@ class Index extends AdminController
             ->limit(8)
             ->select();
         $this->assign('quicks', $quicks);
+        $complete = MallGoods::where('status',2)->count();
+        $all = MallGoods::where('status','>',0)->count();
+        $this->assign('complete', $complete);
+        $this->assign('all', $all);
         return $this->fetch();
     }
 

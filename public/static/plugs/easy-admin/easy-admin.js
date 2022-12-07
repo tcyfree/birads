@@ -202,7 +202,7 @@ define(["jquery", "tableSelect","xmSelect", "ckeditor"], function ($, tableSelec
                 options.limit = options.limit || 15;
                 options.limits = options.limits || [10, 15, 20, 25, 50, 100];
                 options.cols = options.cols || [];
-                options.defaultToolbar = (options.defaultToolbar === undefined && !options.search) ? ['filter', 'print', 'exports'] : ['filter', 'print', 'exports', {
+                options.defaultToolbar = ['filter', {
                     title: '搜索',
                     layEvent: 'TABLE_SEARCH',
                     icon: 'layui-icon-search',
@@ -653,10 +653,10 @@ define(["jquery", "tableSelect","xmSelect", "ckeditor"], function ($, tableSelec
                 }
             },
             image: function (data, option) {
-                option.imageWidth = option.imageWidth || 200;
-                option.imageHeight = option.imageHeight || 40;
+                option.imageWidth = 250;
+                option.imageHeight = 150;
                 option.imageSplit = option.imageSplit || '|';
-                option.imageJoin = option.imageJoin || '<br>';
+                option.imageJoin = option.imageJoin || '';
                 option.title = option.title || option.field;
                 var field = option.field,
                     title = data[option.title];
@@ -671,7 +671,11 @@ define(["jquery", "tableSelect","xmSelect", "ckeditor"], function ($, tableSelec
                     var values = value.split(option.imageSplit),
                         valuesHtml = [];
                     values.forEach((value, index) => {
-                        valuesHtml.push('<img style="max-width: ' + option.imageWidth + 'px; max-height: ' + option.imageHeight + 'px;" src="' + value + '" data-image="' + title + '">');
+                        if(index != 0) {
+                            valuesHtml.push('<img style="margin-left: 10px; max-width: ' + option.imageWidth + 'px; max-height: ' + option.imageHeight + 'px;" src="' + value + '" data-image="' + title + '">');
+                        }else{
+                            valuesHtml.push('<img style="max-width: ' + option.imageWidth + 'px; max-height: ' + option.imageHeight + 'px;" src="' + value + '" data-image="' + title + '">');
+                        }
                     });
                     return valuesHtml.join(option.imageJoin);
                 }
@@ -1375,7 +1379,7 @@ define(["jquery", "tableSelect","xmSelect", "ckeditor"], function ($, tableSelec
                                 var parant = $(this).parent('div');
                                 var liHtml = '';
                                 $.each(urlArray, function (i, v) {
-                                    liHtml += '<li><a><img src="' + v + '" data-image  onerror="this.src=\'' + BASE_URL + 'admin/images/upload-icons/' + uploadIcon + '.png\';this.onerror=null"></a><small class="uploads-delete-tip bg-red badge" data-upload-delete="' + uploadName + '" data-upload-url="' + v + '" data-upload-sign="' + uploadSign + '">×</small></li>\n';
+                                    liHtml += '<li><a><img src="' + v + '" data-images  onerror="this.src=\'' + BASE_URL + 'admin/images/upload-icons/' + uploadIcon + '.png\';this.onerror=null"></a></li>\n';
                                 });
                                 parant.after('<ul id="bing-' + uploadName + '" class="layui-input-block layuimini-upload-show">\n' + liHtml + '</ul>');
                             }
