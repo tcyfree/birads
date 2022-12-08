@@ -5,6 +5,11 @@ namespace app\admin\controller\mall;
 
 
 use app\admin\model\MallGoods;
+use app\admin\model\MallGoods1;
+use app\admin\model\MallGoods2;
+use app\admin\model\MallGoods3;
+use app\admin\model\MallGoods4;
+use app\admin\model\MallGoods5;
 use app\admin\traits\Curd;
 use app\common\controller\AdminController;
 use EasyAdmin\annotation\ControllerAnnotation;
@@ -26,7 +31,25 @@ class Goods extends AdminController
     public function __construct(App $app)
     {
         parent::__construct($app);
-        $this->model = new MallGoods();
+        switch (session('admin.username')) {
+            case 'test1':
+                $this->model = new MallGoods1();
+                break;
+            case 'test2':
+                $this->model = new MallGoods2();
+                break;
+            case 'test3':
+                $this->model = new MallGoods3();
+                break;
+            case 'test4':
+                $this->model = new MallGoods4();
+                break;
+            case 'test5':
+                $this->model = new MallGoods5();
+                break;
+            default:
+                $this->model = new MallGoods();
+        }
         // $this->assign('checkList', ["","良","恶"]);
         $this->assign('checkList', [1 =>"良", 2 => "恶"]);
     }

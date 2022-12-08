@@ -9,6 +9,11 @@ use app\common\controller\AdminController;
 use think\App;
 use think\facade\Env;
 use app\admin\model\MallGoods;
+use app\admin\model\MallGoods1;
+use app\admin\model\MallGoods2;
+use app\admin\model\MallGoods3;
+use app\admin\model\MallGoods4;
+use app\admin\model\MallGoods5;
 
 class Index extends AdminController
 {
@@ -38,8 +43,32 @@ class Index extends AdminController
             ->limit(8)
             ->select();
         $this->assign('quicks', $quicks);
-        $complete = MallGoods::where('status',2)->count();
-        $all = MallGoods::where('status','>',0)->count();
+        switch (session('admin.username')) {
+            case 'test1':
+                $complete = MallGoods1::where('status',2)->count();
+                $all = MallGoods1::where('status','>',0)->count();
+                break;
+            case 'test2':
+                $complete = MallGoods2::where('status',2)->count();
+                $all = MallGoods2::where('status','>',0)->count();
+                break;
+            case 'test3':
+                $complete = MallGoods3::where('status',2)->count();
+                $all = MallGoods3::where('status','>',0)->count();
+                break;
+            case 'test4':
+                $complete = MallGoods4::where('status',2)->count();
+                $all = MallGoods4::where('status','>',0)->count();
+                break;
+            case 'test5':
+                $complete = MallGoods5::where('status',2)->count();
+                $all = MallGoods5::where('status','>',0)->count();
+                break;
+            default:
+            $complete = MallGoods::where('status',2)->count();
+            $all = MallGoods::where('status','>',0)->count();
+        }
+
         $this->assign('complete', $complete);
         $this->assign('all', $all);
         return $this->fetch();
