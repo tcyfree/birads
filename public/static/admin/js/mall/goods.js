@@ -17,6 +17,7 @@ define(["jquery", "easy-admin"], function ($, ea) {
         index: function () {
             ea.table.render({
                 init: init,
+                page: false,
                 toolbar: ['refresh'],
                 limit:15,
                 limits:[5,10,15,20],
