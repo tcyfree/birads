@@ -2,14 +2,14 @@
     <form id="app-form" class="layui-form layuimini-form">
 
         <div class="layui-form-item">
-            <label class="layui-form-label">病人ID</label>
+            <label class="layui-form-label">Patient ID</label>
             <div class="layui-input-block">
                 <input type="text" name="title" class="layui-input" lay-verify="required" placeholder="请输入商品标题" value="{$row.title|default=''}">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label required">图片</label>
+            <label class="layui-form-label required">Images </label>
             <div class="layui-input-block layuimini-upload">
                 <input name="images" class="layui-input layui-col-xs6" lay-verify="required" placeholder="请上传商品图片" value="{$row.images|default=''}" readonly disabled>
                 <div class="layuimini-upload-btn">
@@ -20,10 +20,10 @@
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">第一次分类</label>
+            <label class="layui-form-label">First Identification</label>
             <div class="layui-input-block">
                 <select name="logo" lay-verify="required">
-                    <!--<option value=''></option>-->
+                    <option value=''>Null</option>
                     {foreach $checkList as $k=>$v}
                     <option value='{$k}' {in name="k" value="$row.logo" }selected="" {/in}>{$v}</option>
                     {/foreach}
@@ -32,17 +32,17 @@
         </div>
         <div class="layui-form-item" style="display:flex; margin-left: 20px;">
             <div>
-                <button type="button" class="layui-btn" onclick="copyText()" layui-btn-sm>点击查看AI分类</button>
+                <button type="button" class="layui-btn" onclick="copyText()" layui-btn-sm>Click for Malignant Probability (AI)</button>
             </div>
             <div style="margin-left: 10px;">
                 <input type="password" name="describe" class="layui-input layui-col-xs6" lay-verify="required"  placeholder="请输入密码" maxlength="20" value="{$row.describe|default=''}" disabled>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">第二次分类</label>
+            <label class="layui-form-label">Second Indentification with AI Prediction</label>
             <div class="layui-input-block">
                 <select name="sales" lay-verify="required">
-                    <!--<option value=''></option>-->
+                    <option value=''>Null</option>
                     {foreach $checkList as $k=>$v}
                     <option value='{$k}' {in name="k" value="$row.sales" }selected="" {/in}>{$v}</option>
                     {/foreach}
@@ -50,16 +50,16 @@
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">备注信息</label>
+            <label class="layui-form-label">Remark</label>
             <div class="layui-input-block">
-                <textarea name="remark" class="layui-textarea" placeholder="请输入备注信息">{$row.remark|default=''}</textarea>
+                <textarea name="remark" class="layui-textarea" placeholder="Please enter remarks">{$row.remark|default=''}</textarea>
             </div>
         </div>
          <input name="status" value="2" hidden>
         <div class="hr-line"></div>
         <div class="layui-form-item text-center">
-            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit>确认</button>
-            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit>Confirm</button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">Reset</button>
         </div>
 
     </form>

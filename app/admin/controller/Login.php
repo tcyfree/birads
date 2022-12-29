@@ -49,21 +49,21 @@ class Login extends AdminController
         if ($this->request->isPost()) {
             $post = $this->request->post();
             $rule = [
-                'username|用户名'      => 'require',
-                'password|密码'       => 'require',
-                'keep_login|是否保持登录' => 'require',
+                'username|Account'      => 'require',
+                'password|Password'       => 'require',
+                'keep_login|Remember this account' => 'require',
             ];
             $captcha == 1 && $rule['captcha|验证码'] = 'require|captcha';
             $this->validate($post, $rule);
             $admin = SystemAdmin::where(['username' => $post['username']])->find();
             if (empty($admin)) {
-                $this->error('用户不存在');
+                $this->error('Account not exist');
             }
             if (password($post['password']) != $admin->password) {
-                $this->error('密码输入有误');
+                $this->error('Password error');
             }
             if ($admin->status == 0) {
-                $this->error('账号已被禁用');
+                $this->error('Account forbidden');
             }
             $admin->login_num += 1;
             $admin->save();
@@ -71,7 +71,7 @@ class Login extends AdminController
             unset($admin['password']);
             $admin['expire_time'] = $post['keep_login'] == 1 ? true : time() + 7200;
             session('admin', $admin);
-            $this->success('登录成功');
+            $this->success('login successful');
         }
         $this->assign('captcha', $captcha);
         $this->assign('demo', $this->isDemo);
@@ -85,7 +85,7 @@ class Login extends AdminController
     public function out()
     {
         session('admin', null);
-        $this->success('退出登录成功');
+        $this->success('Log out successfully');
     }
 
     /**

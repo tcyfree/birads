@@ -50,8 +50,8 @@ class Goods extends AdminController
             default:
                 $this->model = new MallGoods();
         }
-        // $this->assign('checkList', ["","良","恶"]);
-        $this->assign('checkList', [1 =>"良", 2 => "恶"]);
+        $this->assign('checkList', ["","True","False"]);
+        // $this->assign('checkList', [1 =>"True", 2 => "False"]);
     }
 
     /**

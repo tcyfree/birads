@@ -202,12 +202,7 @@ define(["jquery", "tableSelect","xmSelect", "ckeditor"], function ($, tableSelec
                 options.limit = options.limit || 15;
                 options.limits = options.limits || [10, 15, 20, 25, 50, 100];
                 options.cols = options.cols || [];
-                options.defaultToolbar = ['filter', {
-                    title: '搜索',
-                    layEvent: 'TABLE_SEARCH',
-                    icon: 'layui-icon-search',
-                    extend: 'data-table-id="' + options.id + '"'
-                }];
+                options.defaultToolbar = ['filter'];
 
                 // 判断是否为移动端
                 if (admin.checkMobile()) {

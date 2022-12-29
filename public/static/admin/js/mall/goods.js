@@ -23,7 +23,7 @@ define(["jquery", "easy-admin"], function ($, ea) {
                 cols: [[
                     {type: "checkbox"},
                     // {field: 'id', width: 80, title: 'ID'},
-                    {field: 'title', minWidth: 180, title: '病人ID'},
+                    {field: 'title', minWidth: 160, title: 'Patient ID'},
                     // {field: 'logo', minWidth: 80, title: '分类图片', search: false, templet: ea.table.image},
                     // {field: 'images', minWidth: 180, title: '图片', search: false, templet: ea.table.image},
                     // {field: 'market_price', width: 100, title: '市场价', templet: ea.table.price},
@@ -32,18 +32,18 @@ define(["jquery", "easy-admin"], function ($, ea) {
                     // {field: 'stock', width: 100, title: '剩余库存'},
                     // {field: 'virtual_sales', width: 100, title: '虚拟销量'},
                     // {field: 'sales', width: 80, title: '销量'},
-                    {field: 'logo', title: '第一次分类', minWidth: 120, selectList: {0: '', 1: '良', 2: '恶'}},
-                    {field: 'sales', title: '第二次分类', minWidth: 120, selectList: {0: '', 1: '良', 2: '恶'}},
-                    {field: 'stock', title: '地区', minWidth: 120, selectList: {0: 'dz', 1: 'ts', 2: 'sw'}},
-                    {field: 'status', title: '是否完成', minWidth: 100, selectList: {1: '否', 2: '是'}},
+                    {field: 'logo', title: 'First Identification', minWidth: 150, selectList: {0: '', 1: 'True', 2: 'False'}},
+                    {field: 'sales', title: 'Second Indentification with AI Prediction', minWidth: 330, selectList: {0: '', 1: 'True', 2: 'False'}},
+                    {field: 'stock', title: 'District', minWidth: 120, selectList: {0: 'dz', 1: 'ts', 2: 'sw'}},
+                    {field: 'status', title: 'Finished ?', minWidth: 100, selectList: {1: 'Yes', 2: 'Not'}},
                     // {field: 'create_time', minWidth: 80, title: '创建时间', search: 'range'},
                     {
                         minWidth: 100,
-                        title: '操作',
+                        title: 'Operate',
                         templet: ea.table.tool,
                         operat: [
                             [{
-                                text: '编辑',
+                                text: 'Detect',
                                 url: init.edit_url,
                                 method: 'open',
                                 auth: 'edit',
