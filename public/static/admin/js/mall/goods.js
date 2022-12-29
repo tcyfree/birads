@@ -34,12 +34,12 @@ define(["jquery", "easy-admin"], function ($, ea) {
                     // {field: 'sales', width: 80, title: '销量'},
                     {field: 'logo', title: 'First Identification', minWidth: 160, selectList: {0: '', 1: 'True', 2: 'False'}},
                     {field: 'sales', title: 'Second Indentification with AI Prediction', minWidth: 330, selectList: {0: '', 1: 'True', 2: 'False'}},
-                    {field: 'stock', title: 'District', minWidth: 120, selectList: {0: 'dz', 1: 'ts', 2: 'sw'}},
-                    {field: 'status', title: 'Finished ?', minWidth: 100, selectList: {1: 'Not', 2: 'Yes'}},
+                    {field: 'stock', title: 'Dataset', minWidth: 120, selectList: {0: 'dz', 1: 'ts', 2: 'sw'}},
+                    {field: 'status', title: 'Finished', minWidth: 100, selectList: {1: 'Not', 2: 'Yes'}},
                     // {field: 'create_time', minWidth: 80, title: '创建时间', search: 'range'},
                     {
                         minWidth: 100,
-                        title: 'Operate',
+                        title: 'Operation',
                         templet: ea.table.tool,
                         operat: [
                             [{
