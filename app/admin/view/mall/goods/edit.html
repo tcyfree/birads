@@ -4,24 +4,23 @@
         <div class="layui-form-item">
             <label class="layui-form-label">Patient ID</label>
             <div class="layui-input-block">
-                <input type="text" name="title" class="layui-input" lay-verify="required" placeholder="请输入商品标题" value="{$row.title|default=''}" disabled>
+                <input type="text" name="title" class="layui-input" placeholder="请输入商品标题" value="{$row.title|default=''}" disabled>
             </div>
         </div>
 
-        <div class="layui-form-item">
-            <label class="layui-form-label required">Images </label>
+        <div class="layui-form-item" style="margin-top: -15px;">
+            <label class="layui-form-label" style="margin-top: 50px;">Images </label>
             <div class="layui-input-block layuimini-upload">
-                <input name="images" class="layui-input layui-col-xs6" lay-verify="required" placeholder="请上传商品图片" value="{$row.images|default=''}" readonly disabled>
+                <input name="images" class="layui-input layui-col-xs6" placeholder="请上传商品图片" value="{$row.images|default=''}" readonly disabled style="border: 0; display:none;">
                 <div class="layuimini-upload-btn">
                     <span><a  data-upload="images" data-upload-number="more" data-upload-exts="png|jpg|ico|jpeg" data-upload-icon="image"></a></span>
-                    <span><a  id="select_images" data-upload-select="images" data-upload-number="more" data-upload-mimetype="image/*"></a></span>
                 </div>
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">First Identification</label>
-            <div class="layui-input-block">
+            <label class="layui-form-label required2">First Identification</label>
+            <div class="layui-input-block" style="padding-top: 10px;">
                 <select name="logo" lay-verify="required">
                     <option value=''>Null</option>
                     {foreach $checkList as $k=>$v}
@@ -39,8 +38,8 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">Second Indentification with AI Prediction</label>
-            <div class="layui-input-block">
+            <label class="layui-form-label required3">Second Indentification with AI Prediction</label>
+            <div class="layui-input-block" style="padding-top: 30px;">
                 <select name="sales" lay-verify="required">
                     <option value=''>Null</option>
                     {foreach $checkList as $k=>$v}
