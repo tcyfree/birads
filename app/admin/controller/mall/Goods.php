@@ -105,8 +105,8 @@ class Goods extends AdminController
             ];
 
     $message = [
-      'logo.between' => '第一次分类必填',
-      'sales.between' => '第二次分类必填',
+      'logo.between' => 'First Identification Required',
+      'sales.between' => 'Second Indentification Required',
     ];
             $this->validate($post, $rule,$message);
             try {
