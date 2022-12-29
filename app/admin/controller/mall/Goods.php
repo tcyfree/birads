@@ -10,6 +10,7 @@ use app\admin\model\MallGoods2;
 use app\admin\model\MallGoods3;
 use app\admin\model\MallGoods4;
 use app\admin\model\MallGoods5;
+use app\admin\model\MallForreviewer;
 use app\admin\traits\Curd;
 use app\common\controller\AdminController;
 use EasyAdmin\annotation\ControllerAnnotation;
@@ -46,6 +47,9 @@ class Goods extends AdminController
                 break;
             case 'test5':
                 $this->model = new MallGoods5();
+                break;
+            case 'forreviewer':
+                $this->model = new MallForreviewer();
                 break;
             default:
                 $this->model = new MallGoods();

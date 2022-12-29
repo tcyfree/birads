@@ -35,7 +35,7 @@ define(["jquery", "easy-admin"], function ($, ea) {
                     {field: 'logo', title: 'First Identification', minWidth: 150, selectList: {0: '', 1: 'True', 2: 'False'}},
                     {field: 'sales', title: 'Second Indentification with AI Prediction', minWidth: 330, selectList: {0: '', 1: 'True', 2: 'False'}},
                     {field: 'stock', title: 'District', minWidth: 120, selectList: {0: 'dz', 1: 'ts', 2: 'sw'}},
-                    {field: 'status', title: 'Finished ?', minWidth: 100, selectList: {1: 'Yes', 2: 'Not'}},
+                    {field: 'status', title: 'Finished ?', minWidth: 100, selectList: {1: 'Not', 2: 'Yes'}},
                     // {field: 'create_time', minWidth: 80, title: '创建时间', search: 'range'},
                     {
                         minWidth: 100,
