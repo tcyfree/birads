@@ -28,4 +28,12 @@ class SystemAdmin extends TimeModel
         return $list;
     }
 
+    public function getAdminList()
+    {
+        $list = (new SystemAdmin())
+            ->where("delete_time is null")
+            ->column('username', 'id');
+        return $list;
+    }
+
 }

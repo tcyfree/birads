@@ -35,7 +35,7 @@
                 <button type="button" class="layui-btn" onclick="copyText()" layui-btn-sm>点击查看AI分类</button>
             </div>
             <div style="margin-left: 10px;">
-                <input type="password" name="describe" class="layui-input layui-col-xs6" lay-verify="required"  placeholder="请输入密码" maxlength="20" value="{$row.describe|default=''}" disabled>
+                <input id = "ai-probility" type="password" name="describe" class="layui-input layui-col-xs6" lay-verify="required"  placeholder="" maxlength="20" value="{$row.describe|default='1234'}" disabled>
             </div>
         </div>
         <div class="layui-form-item">
@@ -66,6 +66,24 @@
 </div>
 <script type="text/javascript">    	
 function copyText() {
-                $("input[name='describe']").attr('type', 'text');
+                
+        layui.use([ 'element', 'jquery', 'laydate', 'form'],function() {
+			var $ = layui.jquery;
+			var element = layui.element;
+			var laydate = layui.laydate;
+			var form = layui.form;
+            $.get("http://127.0.0.1:5000/v1/book/1", function(res){
+                var v1 = document.getElementById("ai-probility");
+                v1.value = res.id
+                // $("input[name='describe']").attr('type', 'text');
+						// if(res.code==0){	
+						// 	layer.msg("修改成功");
+                        //     // $("input[name='describe']").attr('type', 'text');
+						// }else{
+						// 	layer.msg("修改失败");
+						// }						
+					})
+			   });
+               $("input[name='describe']").attr('type', 'text');
 }
 </script>

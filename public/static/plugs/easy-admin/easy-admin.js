@@ -197,17 +197,17 @@ define(["jquery", "tableSelect","xmSelect", "ckeditor"], function ($, tableSelec
                 options.url = options.url || admin.url(options.init.index_url);
                 options.headers = admin.headers();
                 options.page = admin.parame(options.page, true);
-                options.search = admin.parame(options.search, true);
+                // options.search = admin.parame(options.search, true);
                 options.skin = options.skin || 'line';
                 options.limit = options.limit || 15;
                 options.limits = options.limits || [10, 15, 20, 25, 50, 100];
                 options.cols = options.cols || [];
-                options.defaultToolbar = ['filter', {
-                    title: '搜索',
-                    layEvent: 'TABLE_SEARCH',
-                    icon: 'layui-icon-search',
-                    extend: 'data-table-id="' + options.id + '"'
-                }];
+                // options.defaultToolbar = ['filter', {
+                //     title: '搜索',
+                //     layEvent: 'TABLE_SEARCH',
+                //     icon: 'layui-icon-search',
+                //     extend: 'data-table-id="' + options.id + '"'
+                // }];
 
                 // 判断是否为移动端
                 if (admin.checkMobile()) {

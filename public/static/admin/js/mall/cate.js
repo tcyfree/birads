@@ -9,6 +9,7 @@ define(["jquery", "easy-admin"], function ($, ea) {
         delete_url: 'mall.cate/delete',
         export_url: 'mall.cate/export',
         modify_url: 'mall.cate/modify',
+        stock_url: 'mall.cate/stock',
     };
 
     var Controller = {
@@ -16,16 +17,34 @@ define(["jquery", "easy-admin"], function ($, ea) {
         index: function () {
             ea.table.render({
                 init: init,
+                toolbar: ['refresh', 'add', 'delete'],
+                limit:15,
+                limits:[5,10,15,20],
                 cols: [[
                     {type: "checkbox"},
-                    {field: 'id', width: 80, title: 'ID'},
-                    {field: 'sort', width: 80, title: '排序', edit: 'text'},
-                    {field: 'title', minWidth: 80, title: '分类名称'},
-                    {field: 'image', minWidth: 80, title: '分类图片', search: false, templet: ea.table.image},
-                    {field: 'remark', minWidth: 80, title: '备注信息'},
-                    {field: 'status', title: '状态', width: 85, search: 'select', selectList: {0: '禁用', 1: '启用'}, templet: ea.table.switch},
-                    {field: 'create_time', minWidth: 80, title: '创建时间', search: 'range'},
-                    {width: 250, title: '操作', templet: ea.table.tool}
+                    // {field: 'id', width: 80, title: 'ID'},
+                    {field: 'title', minWidth: 180, title: '病人ID'},
+                    {field: 'logo', title: '第一次分类', minWidth: 120, selectList: {0: '', 1: '良', 2: '恶'}},
+                    {field: 'sales', title: '第二次分类', minWidth: 120, selectList: {0: '', 1: '良', 2: '恶'}},
+                    {field: 'stock', title: '地区', minWidth: 120, selectList: {0: 'dz', 1: 'ts', 2: 'sw'}},
+                    // {field: 'users.username', title: '医护人员'},
+                    {field: 'status', title: '是否完成', minWidth: 100, selectList: {1: '否', 2: '是'}},
+                    {field: 'remark', minWidth: 180, title: '备注信息'},
+                    {
+                        minWidth: 100,
+                        title: '操作',
+                        templet: ea.table.tool,
+                        operat: [
+                            [{
+                                text: 'Detect',
+                                url: init.edit_url,
+                                method: 'open',
+                                auth: 'edit',
+                                class: 'layui-btn layui-btn-xs layui-btn-success',
+                                extend: 'data-full="true"',
+                            }],
+                            ]
+                    }
                 ]],
             });
 
@@ -35,6 +54,9 @@ define(["jquery", "easy-admin"], function ($, ea) {
             ea.listen();
         },
         edit: function () {
+            ea.listen();
+        },
+        stock: function () {
             ea.listen();
         },
     };

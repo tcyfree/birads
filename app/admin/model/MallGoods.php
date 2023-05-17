@@ -27,4 +27,9 @@ class MallGoods extends TimeModel
         return $this->belongsTo('app\admin\model\MallCate', 'cate_id', 'id');
     }
 
+    public function users()
+    {
+        return $this->belongsTo('\app\admin\model\SystemAdmin', 'virtual_sales', 'id');
+    }
+
 }

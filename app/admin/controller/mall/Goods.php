@@ -5,11 +5,6 @@ namespace app\admin\controller\mall;
 
 
 use app\admin\model\MallGoods;
-use app\admin\model\MallGoods1;
-use app\admin\model\MallGoods2;
-use app\admin\model\MallGoods3;
-use app\admin\model\MallGoods4;
-use app\admin\model\MallGoods5;
 use app\admin\traits\Curd;
 use app\common\controller\AdminController;
 use EasyAdmin\annotation\ControllerAnnotation;
@@ -31,27 +26,12 @@ class Goods extends AdminController
     public function __construct(App $app)
     {
         parent::__construct($app);
-        switch (session('admin.username')) {
-            case 'test1':
-                $this->model = new MallGoods1();
-                break;
-            case 'test2':
-                $this->model = new MallGoods2();
-                break;
-            case 'test3':
-                $this->model = new MallGoods3();
-                break;
-            case 'test4':
-                $this->model = new MallGoods4();
-                break;
-            case 'test5':
-                $this->model = new MallGoods5();
-                break;
-            default:
-                $this->model = new MallGoods();
-        }
-        // $this->assign('checkList', ["","良","恶"]);
+        $this->model = new MallGoods();
         $this->assign('checkList', [1 =>"良", 2 => "恶"]);
+        $this->assign('checkList', [1 =>"良", 2 => "恶"]);
+        $this->assign('areas', [1 =>"dz", 2 => "ts", 3 => "sw"]);
+
+        $this->assign('users', (new \app\admin\model\SystemAdmin())->where('id','>',1)->where("delete_time is null")->column('username', 'id'));
     }
 
     /**
@@ -64,16 +44,35 @@ class Goods extends AdminController
                 return $this->selectList();
             }
             list($page, $limit, $where) = $this->buildTableParames();
-            $count = $this->model
-                ->withJoin('cate', 'LEFT')
-                ->where($where)
-                ->count();
-            $list = $this->model
-                ->withJoin('cate', 'LEFT')
-                ->where($where)
-                ->page($page, $limit)
-                ->order($this->sort)
-                ->select();
+            if (session('admin.id') == 1) {
+                $count = $this->model
+                    // ->withJoin('cate', 'LEFT')
+                    ->withJoin(['users'])
+                    ->where($where)
+                    ->count();
+                $list = $this->model
+                    // ->withJoin('cate', 'LEFT')
+                    ->where($where)
+                    ->page($page, $limit)
+                    ->order($this->sort)
+                    ->select();
+            } else {
+                $count = $this->model
+                    // ->withJoin('cate', 'LEFT')
+                    ->withJoin(['users'])
+                    ->where($where)
+                    ->where('virtual_sales', session('admin.id'))
+                    ->count();
+                $list = $this->model
+                    // ->withJoin('cate', 'LEFT')
+                    ->where($where)
+                    ->withJoin(['users'])
+                    ->where('virtual_sales', session('admin.id'))
+                    ->page($page, $limit)
+                    ->order($this->sort)
+                    ->select();    
+            }
+
             $data = [
                 'code'  => 0,
                 'msg'   => '',
@@ -138,6 +137,28 @@ class Goods extends AdminController
         }
         $this->assign('row', $row);
         return $this->fetch();
+    }
+
+    /**
+     * @NodeAnotation(title="执行Pyhon")
+     */
+    public function execPython($url = 1)
+    {
+        // $cmd = system("python /Applications/phpstudy/WWW/birads/app/admin/controller/mall/classificateTemp.py $url");
+        // $cmd = shell_exec("sudo python classificateTemp.py 1");
+        $cmd = exec("http://127.0.0.1:5000/v1/book/1");
+        // header("content-type:text/html;charset=utf-8");
+        // $order="python ".getcwd()."/Applications/phpstudy/WWW/birads/app/admin/controller/mall/classificateTemp.py 1";
+        // $exec = shell_exec("python"); 
+        var_dump($cmd);
+
+        echo "$cmd";
+        $data = [
+            'code'  => 0,
+            'msg'   => '11s1333',
+            'data'  => $cmd,
+        ];
+        return json($data);
     }
 
 }

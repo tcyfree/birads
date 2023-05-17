@@ -18,7 +18,7 @@ use app\common\model\TimeModel;
 class MallGoods1 extends TimeModel
 {
 
-    protected $table = "";
+    protected $table = "ea_mall_goods6";
 
     protected $deleteTime = 'delete_time';
 
