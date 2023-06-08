@@ -51,6 +51,9 @@ class Goods extends AdminController
             case 'forreviewer':
                 $this->model = new MallForreviewer();
                 break;
+            case 'test':
+                $this->model = new MallForreviewer();
+                break;
             default:
                 $this->model = new MallGoods();
         }
