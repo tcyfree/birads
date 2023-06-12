@@ -19,7 +19,7 @@
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label required2">First Identification</label>
+            <label class="layui-form-label required2" style="margin-top: 10px;">Identification</label>
             <div class="layui-input-block" style="padding-top: 10px;">
                 <select name="logo" lay-verify="required">
                     <option value=''>Null</option>
@@ -34,10 +34,10 @@
                 <button type="button" class="layui-btn" onclick="copyText()" layui-btn-sm>Click for Malignant Probability (AI)</button>
             </div>
             <div style="margin-left: 10px;">
-                <input type="password" name="describe" class="layui-input layui-col-xs6" lay-verify="required"  placeholder="请输入密码" maxlength="20" value="{$row.describe|default=''}" disabled>
+                <input type="password" name="describe" class="layui-input layui-col-xs6" lay-verify="required"  placeholder="请输入密码" maxlength="20" value="{$row.describe|default='Please wait a moment...'}" disabled>
             </div>
         </div>
-        <div class="layui-form-item">
+        <!-- <div class="layui-form-item">
             <label class="layui-form-label required3">Second Indentification with AI Prediction</label>
             <div class="layui-input-block" style="padding-top: 30px;">
                 <select name="sales" lay-verify="required">
@@ -47,7 +47,7 @@
                     {/foreach}
                 </select>
             </div>
-        </div>
+        </div> -->
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">Remark</label>
             <div class="layui-input-block">
