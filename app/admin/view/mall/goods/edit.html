@@ -31,23 +31,21 @@
         </div>
         <div class="layui-form-item" style="display:flex; margin-left: 20px;">
             <div>
-                <button type="button" class="layui-btn" onclick="copyText()" layui-btn-sm>Click for Malignant Probability (AI)</button>
+                <button id="showImageBtn" type="button" class="layui-btn" onclick="copyText()" layui-btn-sm>Click for Malignant Probability (AI)</button>
             </div>
             <div style="margin-left: 10px;">
                 <input type="password" name="describe" class="layui-input layui-col-xs6" lay-verify="required"  placeholder="请输入密码" maxlength="20" value="{$row.describe|default='Please wait a moment...'}" disabled>
             </div>
         </div>
-        <!-- <div class="layui-form-item">
-            <label class="layui-form-label required3">Second Indentification with AI Prediction</label>
-            <div class="layui-input-block" style="padding-top: 30px;">
-                <select name="sales" lay-verify="required">
-                    <option value=''>Null</option>
-                    {foreach $checkList as $k=>$v}
-                    <option value='{$k}' {in name="k" value="$row.sales" }selected="" {/in}>{$v}</option>
-                    {/foreach}
-                </select>
+        <div id="imageContainer" style="display: none;" class="layui-form-item" style="margin-top: -15px;">
+            <label class="layui-form-label" style="margin-top: 50px;">Images </label>
+            <div class="layui-input-block layuimini-upload">
+                <input name="images2" class="layui-input layui-col-xs6" placeholder="请上传商品图片" value="{$row.sales|default=''}" readonly disabled style="border: 0; display:none;">
+                <div class="layuimini-upload-btn">
+                    <span><a  data-upload="images2" data-upload-number="more" data-upload-exts="png|jpg|ico|jpeg" data-upload-icon="image"></a></span>
+                </div>
             </div>
-        </div> -->
+        </div>
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">Remark</label>
             <div class="layui-input-block">
@@ -65,6 +63,7 @@
 </div>
 <script type="text/javascript">    	
 function copyText() {
-                $("input[name='describe']").attr('type', 'text');
+    $("input[name='describe']").attr('type', 'text');
+    $('#imageContainer').show(); // 显示图片容器
 }
 </script>
